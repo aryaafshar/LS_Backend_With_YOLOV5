@@ -113,7 +113,7 @@ class MyModel(LabelStudioMLBase):
         img_width, img_height = get_image_size(image_path)
         output_label="person"
         for a in model_results_numpy:
-          if a[5]==0:
+          #if a[5]==0:
             if a[4]>self.score_thresh:
               x, y, xmax, ymax =a[0],a[1],a[2],a[3]
               score=float(a[4])
