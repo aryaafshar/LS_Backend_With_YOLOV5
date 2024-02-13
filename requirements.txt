@@ -1,0 +1,11 @@
+ultralytics
+boto3
+click
+label-studio-ml
+opencv-contrib-python-headless
+redis
+rq
+supervisor
+torch
+torchvision
+uwsgi
