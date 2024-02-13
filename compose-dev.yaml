@@ -1,12 +1,30 @@
+
+version: "3.8"
 services:
-  app:
-    entrypoint:
-    - sleep
-    - infinity
-    image: docker/dev-environments-default:stable-1
+  
+  redis:
+    
+    image: redis:alpine
+    container_name:redis2
     init: true
     volumes:
-    - type: bind
-      source: /var/run/docker.sock
-      target: /var/run/docker.sock
-
+     - "./data/redis:/data"
+    expose:
+      - 6379 
+    server:
+    container_name: server
+    build: .
+    environment:
+      - MODEL_DIR=/data/models
+      - RQ_QUEUE_NAME=default
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - 9090:9090
+    depends_on:
+      - redis
+    links:
+      - redis
+    volumes:
+      - "./data/server:/data"
+      - "./logs:/tmp"
