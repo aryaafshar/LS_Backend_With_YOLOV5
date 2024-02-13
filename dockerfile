@@ -16,7 +16,7 @@ COPY supervisord.conf /etc/supervisor/conf.d/
 
 WORKDIR /app
 
-RUN curl -O https://github.com/ultralytics/assets/releases/download/v8.1.0/yolov8n.pt
+RUN curl -O https://github.com/ultralytics/assets/releases/download/v8.1.0/yolov5s.pt
 COPY * /app/
 COPY /_base_/ /app/_base_/
 
